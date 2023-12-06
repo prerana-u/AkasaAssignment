@@ -35,7 +35,7 @@ export default function Navbar() {
           <ul>
             <li>
               <a className="nav-link scrollto" href="/dashboard">
-                Dashboard
+               <b> Dashboard</b>
               </a>
             </li>
           </ul>

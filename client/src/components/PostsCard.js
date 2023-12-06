@@ -62,7 +62,7 @@ export default function PostsCard(props) {
           }}
         >
           <p className="card-text">
-            <b> Keyword: </b> {props.keyword}
+            <b style={{color:"#1e5cc8"}}> Keyword: </b> {props.keyword}
             <br />
             <br />
             {props.project_description}

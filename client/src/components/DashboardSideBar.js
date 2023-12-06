@@ -14,14 +14,15 @@ export default function DashboardSideBar() {
           </a>
         </li>
         <li className="nav-item">
-        <HashLink to="/#posts" className="nav-link collapsed"><i class="bi bi-postcard-heart-fill"></i>  View All Posts</HashLink>
-        </li>
-        <li className="nav-item">
           <a className="nav-link collapsed" href="/dashboard">
             <i className="bi bi-grid" />
             <span>Dashboard</span>
           </a>
         </li>
+        <li className="nav-item">
+        <HashLink to="/#posts" className="nav-link collapsed"><i class="bi bi-postcard-heart-fill"></i>  View All Posts</HashLink>
+        </li>
+        
      
         <li className="nav-item">
           <a className="nav-link collapsed" href="/createpost">

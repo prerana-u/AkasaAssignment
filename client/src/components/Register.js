@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "./Navbar";
 import { createClient } from "@supabase/supabase-js";
-
+import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
 export default function Register() {
@@ -19,9 +19,22 @@ export default function Register() {
 
   const register = async () => {
     console.log(usernameReg, passwordReg);
-    const { data, error } = await supabase
+    if(usernameReg!=="" && passwordReg!=="")
+    {
+      const { data, error } = await supabase
       .from("Users")
       .insert([{ email: usernameReg, password: passwordReg }]);
+    }
+    else{
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "Please fill in the details!",
+        showConfirmButton: true,
+     
+      });
+    }
+ 
   };
 
 

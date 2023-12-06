@@ -57,7 +57,7 @@ export default function EditPost(props) {
     <div className="ml-5" onLoad={ViewPost}>
       <GuideNavBar />
       <GuideSideBar />
-      <main id="main" className="main">
+      <main id="main" className="main" style={{marginTop:"90px"}}>
         <div className="pagetitle">
           <h1>Edit Post</h1>
           <nav>

@@ -52,7 +52,7 @@ export default function AddPost() {
     <div className="ml-5">
       <GuideNavBar />
       <GuideSideBar />
-      <main id="main" className="main">
+      <main id="main" className="main" style={{marginTop:"90px"}}>
         <div className="pagetitle">
           <h1>Create a Post</h1>
           <nav>

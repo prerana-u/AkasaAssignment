@@ -99,7 +99,7 @@ export default function HomePage() {
                 margin: "auto",
               }}
             >
-              <h2>View All Posts</h2>
+              <h2>Blog Posts</h2>
               <div
                 style={{
                   float: "left",

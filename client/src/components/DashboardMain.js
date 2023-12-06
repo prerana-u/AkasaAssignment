@@ -35,7 +35,7 @@ export default function DashboardMain() {
   return (
     <div>
        {sessionStorage.getItem("email") === null &&  navigate("/login") }
-      <main id="main" className="main" >
+      <main id="main" className="main" style={{marginTop:"90px"}}>
         <div className="pagetitle"  >
           <h1>My Posts</h1>
           <nav>

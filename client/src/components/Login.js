@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Navbar from "./Navbar";
-import { redirect } from 'react-router';
+import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { createClient } from "@supabase/supabase-js";
 export default function Login() {
@@ -12,13 +12,21 @@ export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const login = async () => {
+
     const { data, error } = await supabase
-      .from("Users")
-      .select("email, password")
-      .eq("email", username);
+    .from('Users')
+    .select('email,password')
+    .match({ email: username, password: password });
+
     console.log(data);
     if (data.length === 0) {
-      console.log("Invalid email or password");
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "Invalid Email/Password! Try again!",
+        showConfirmButton: true,
+     
+      });
     } else {
       localStorage.setItem("email", true);
       sessionStorage.setItem("email", username);
@@ -31,7 +39,7 @@ export default function Login() {
      
       <Navbar />
       <main>
-        <div className="container">
+        <div className="container" > 
           <section className="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
             <div className="container" >
               <div className="row justify-content-center">
