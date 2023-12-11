@@ -25,7 +25,7 @@
 
 
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Bitter', serif;
   background: #f6f9ff;
   color: #444444;
 }
@@ -46,7 +46,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Nunito", sans-serif;
+  font-family: 'Bitter', serif;
 }
 
 .navbar {
@@ -310,14 +310,14 @@ h6 {
   font-weight: 700;
   line-height: 56px;
   color: #ffffff;
-  text-shadow:2px 2px #2d2d2d;
+  text-shadow:2px 1px #2d2d2d;
 }
 
 #hero h2 {
   color: rgba(255, 255, 255);
   margin-bottom: 50px;
   font-size: 24px;
-  text-shadow:2px 2px #666666;
+  text-shadow:1px 1px #2d2d2d;
 }
 
 #hero .btn-get-started {
@@ -432,6 +432,10 @@ h6 {
   }
 }
 
+#loginbg{
+  background-image: url("../img/bgimg.jpg");
+}
+
 
 /* Card */
 .card {
@@ -454,7 +458,7 @@ h6 {
   font-size: 18px;
   font-weight: 500;
   color: #012970;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Bitter', serif;
 }
 
 .card-title span {
@@ -474,7 +478,7 @@ h6 {
 /* Alerts */
 .alert-heading {
   font-weight: 500;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Bitter', serif;
   font-size: 20px;
 }
 
@@ -523,7 +527,7 @@ h6 {
 /* Breadcrumbs */
 .breadcrumb {
   font-size: 14px;
-  font-family: "Nunito", sans-serif;
+  font-family: 'Bitter', serif;
   color: #899bbd;
   font-weight: 600;
 }
@@ -543,7 +547,7 @@ h6 {
 
 .breadcrumb .active {
   color: #51678f;
-  font-weight: 600;
+  font-weight: 300;
 }
 
 /* Bordered Tabs */
@@ -588,7 +592,7 @@ h6 {
   font-size: 26px;
   font-weight: 700;
   color: #012970;
-  font-family: "Nunito", sans-serif;
+  font-family: 'Bitter', serif;
 }
 
 .header {

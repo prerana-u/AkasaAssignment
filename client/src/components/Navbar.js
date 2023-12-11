@@ -11,7 +11,7 @@ export default function Navbar() {
       >
         <a href="/" className="logo d-flex align-items-center">
           <img src="assets/img/logo.png" alt="" />
-          <span className="d-none d-lg-block">BlogsSpot</span>
+          <span className="d-none d-lg-block">CovidTracker</span>
         </a>
       </div>
       {/* End Logo */}
@@ -19,28 +19,14 @@ export default function Navbar() {
         {sessionStorage.getItem("email") === null && (
           <ul>
             <li>
-              <a className="nav-link scrollto" href="/login">
-                Login
-              </a>
-            </li>
-            <li>
-              <a className="getstarted scrollto" href="/register">
-                Register
+              <a className="nav-link scrollto" href="/addcase">
+               <b> Add Details</b>
               </a>
             </li>
           </ul>
         )}
 
-        {sessionStorage.getItem("email") !== null && (
-          <ul>
-            <li>
-              <a className="nav-link scrollto" href="/dashboard">
-               <b> Dashboard</b>
-              </a>
-            </li>
-          </ul>
-        )}
-
+      
         <i className="bi bi-list mobile-nav-toggle" />
       </div>
     </header>

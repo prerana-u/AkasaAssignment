@@ -1,55 +1,43 @@
 import React, { useState, useEffect } from "react";
-import { createClient } from "@supabase/supabase-js";
+
 import PostsCard from "./PostsCard";
 import Input from "@mui/material/Input";
 import InputAdornment from "@mui/material/InputAdornment";
 import SearchIcon from "@mui/icons-material/Search";
-
+import Axios from 'axios';
 export default function HomePage() {
-  const [postDets, setPostDets] = useState([]);
-  const [keyword, setKeyword] = useState("");
-  const supabase = createClient(
-    "https://qspnufyghsfzeuwzybam.supabase.co",
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFzcG51ZnlnaHNmemV1d3p5YmFtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDE3NzczOTAsImV4cCI6MjAxNzM1MzM5MH0.h1-CQmos9OtigpKtcRZ5HcBFZYq2zESktvIupWm46Gw"
-  );
-  const getPosts = async () => {
-    let { data: Blogs, error } = await supabase
-      .from("Blogs")
-      .select("*")
-      .order("title", { ascending: true });
-    console.log(Blogs);
-    setPostDets(Blogs);
-  };
 
-  const clearInput = () => {
-    if (
-      document.getElementById("input-with-icon-adornment").value ===
-      "Search by Keyword..."
-    )
-      document.getElementById("input-with-icon-adornment").value = "";
-  };
+ const [coviddets, setCovidDets]=useState([]);
 
-  const defaultInput = () => {
-    var s = document.getElementById("input-with-icon-adornment").value;
-    if (s === "")
-      document.getElementById("input-with-icon-adornment").value =
-        "Search by Keyword...";
-    else console.log(keyword);
-  };
 
-  const fetchdata = async () => {
-    let { data: Blogs, error } = await supabase
-      .from("Blogs")
-      .select("*")
-      .ilike('keyword', '%'+keyword+'%');
+  const fetchdata = () => {
+    Axios.get("http://localhost:3001/getdets", {
+        
+    }).then((response) => {
 
-    setPostDets(Blogs);
-    console.log(postDets);
-  };
+    setCovidDets(response.data);
+ 
+    //console.log(response);
+    console.log(response.data);
+})
+
+}
+
+
+
+  // const fetchdata = async () => {
+  //   let { data: Blogs, error } = await supabase
+  //     .from("Blogs")
+  //     .select("*")
+  //     .ilike('keyword', '%'+keyword+'%');
+
+  //   setPostDets(Blogs);
+  //   console.log(postDets);
+  // };
 
   useEffect(() => {
-    getPosts();
-    console.log(postDets);
+    fetchdata();
+    console.log(coviddets);
   }, []);
 
   return (
@@ -57,8 +45,8 @@ export default function HomePage() {
       <section id="hero" className="d-flex align-items-center">
         <div className="container">
           <div className="row">
-            <h1>Become a Blogger Today!</h1>
-            <h2><b>Express Your Thoughts, Ignite Conversations!</b></h2>
+            <h1>Covid-19 Dashboard!</h1>
+            <h2><b>View all details statewise!</b></h2>
           </div>
           <button
                             className="btn"
@@ -72,7 +60,8 @@ export default function HomePage() {
                             }}
                            
                           >
-                            <a href="#posts" style={{color: "white"}}>View Posts</a>
+                            <a href="#postsection" style={{color: "white"}}>View Statewise 
+                            Data</a>
                             
                           </button>
         </div>
@@ -99,54 +88,15 @@ export default function HomePage() {
                 margin: "auto",
               }}
             >
-              <h2>Blog Posts</h2>
-              <div
-                style={{
-                  float: "left",
-                  display: "flex",
-                  flexDirection: "row",
-                  alignItems: "center",
-                  margin: "30px",
-                }}
-                id="posts"
-              >
-                <Input
-                  id="input-with-icon-adornment"
-                  className="searchBar"
-                  style={{ width: "400px", marginRight: "20px" }}
-                  defaultValue="Search by Keyword..."
-                  onChange={(e) => {
-                    setKeyword(e.target.value);
-                  }}
-                  onFocus={clearInput}
-                  onBlur={defaultInput}
-                  startAdornment={
-                    <InputAdornment position="start">
-                      <SearchIcon id="sicon" />
-                    </InputAdornment>
-                  }
-                />
+              <h2>View Data</h2>
 
-                <button
-                        type="submit"
-                        className="btn"
-                        style={{
-                          backgroundColor: "#a8d5d7",
-                          color: "black",
-                        }}
-                        onClick={() => {
-                         fetchdata();
-                        }}
-                      >
-                        Search
-                      </button>
-              </div>
             </div>
 
             <div
               style={{
                 width: "100%",
                 display: "flex",
+                id:"datad",
                 flexDirection: "row-reverse",
                 alignItems: "right",
               }}
@@ -154,13 +104,12 @@ export default function HomePage() {
           </div>
           <br />
           <div className="d-flex flex-row gap-4 flex-wrap">
-            {postDets.map((item, key) => {
+            {coviddets.map((item, key) => {
               return (
                 <PostsCard
-                  keyword={item.keyword}
-                  title={item.title}
-                  project_description={item.post}
-                  id={item.id}
+                
+                  title={item.State_Name}
+                  no_of_positive={item.No_of_Positive}
                   key={key}
                 />
               );

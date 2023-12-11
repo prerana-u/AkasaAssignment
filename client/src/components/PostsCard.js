@@ -1,38 +1,10 @@
 import React, { useState, useReducer } from "react";
-import { createClient } from "@supabase/supabase-js";
-import LikeButton from "./LikeButton";
+
 
 export default function PostsCard(props) {
-  const initialState = {
-    likes: 0,
-    dislikes: 0,
-  };
 
-  const supabase = createClient(
-    "https://qspnufyghsfzeuwzybam.supabase.co",
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFzcG51ZnlnaHNmemV1d3p5YmFtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDE3NzczOTAsImV4cCI6MjAxNzM1MzM5MH0.h1-CQmos9OtigpKtcRZ5HcBFZYq2zESktvIupWm46Gw"
-  );
 
-  const appReducer = (state, action) => {
-    switch (action.type) {
-      case "HANDLE_LIKE":
-        return {
-          ...state,
-          likes: state.likes + action.payload,
-        };
-      case "HANDLE_DISLIKE":
-        return {
-          ...state,
-          dislikes: state.dislikes + action.payload,
-        };
-      default:
-        return state;
-    }
-  };
 
-  const [state, dispatch] = useReducer(appReducer, initialState);
-  const { likes, dislikes } = state;
-  const [status, setStatus] = useState(null);
 
 
   return (
@@ -62,10 +34,10 @@ export default function PostsCard(props) {
           }}
         >
           <p className="card-text">
-            <b style={{color:"#1e5cc8"}}> Keyword: </b> {props.keyword}
+            <b style={{color:"#1e5cc8"}}> No. of Positive: </b> {props.no_of_positive}
             <br />
             <br />
-            {props.project_description}
+           
           </p>
         </div>
         <div
@@ -75,7 +47,7 @@ export default function PostsCard(props) {
             alignItems: "center",
           }}
         >
-         <LikeButton postid={props.id}/>
+       
         </div>
       </div>
     </div>
